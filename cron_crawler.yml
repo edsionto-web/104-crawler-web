@@ -26,6 +26,6 @@ jobs:
       - name: 執行爬蟲並寫入資料庫
         env:
           # 將 GitHub 的秘密鑰匙代入程式環境變數
-          SUPABASE_URL: ${{ ltiwcqqorcznqybfvdww }}
-          SUPABASE_KEY: ${{ ap-northeast-2 }}
+          SUPABASE_URL: ${{ https://ltiwcqqorcznqybfvdww.supabase.co/rest/v1/ }}
+          SUPABASE_KEY: ${{ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx0aXdjcXFvcmN6bnF5YmZ2ZHd3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUzNDY0NDksImV4cCI6MjEwMDkyMjQ0OX0.oGmpupRxokLJAP7DGPIIEBdf2rGs2zFaucPas0olL1U }}
         run: python crawler.py
