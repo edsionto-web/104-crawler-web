@@ -1,0 +1,31 @@
+name: 104 定時爬蟲任務
+
+on:
+  schedule:
+    # 這裡使用 Cron 語法，代表「每天台灣時間早上 8:00」自動執行
+    # 注意：GitHub Actions 使用 UTC 時間，台灣時間 (UTC+8) 早上 8 點 = UTC 0 點
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 保留這個設定，讓你隨時可以去 GitHub 後台手動點擊按鈕立即執行
+
+jobs:
+  run-crawler:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 複製專案程式碼
+        uses: actions/checkout@v4
+
+      - name: 設定 Python 環境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: 安裝所需套件
+        run: |
+          pip install requests
+
+      - name: 執行爬蟲並寫入資料庫
+        env:
+          # 將 GitHub 的秘密鑰匙代入程式環境變數
+          SUPABASE_URL: ${{ ltiwcqqorcznqybfvdww }}
+          SUPABASE_KEY: ${{ ap-northeast-2 }}
+        run: python crawler.py
